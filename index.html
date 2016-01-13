@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>image resize</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="css/imageResize.css">
+</head>
+<body>
+<div class="banner">
+	<img data-focus="left 1000" src="images/main-hero.jpg">
+</div>
+
+<div class="banner">
+	<img data-focus="right 888" src="images/demo3.jpg">
+</div>
+
+<script src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/imageResize.js"></script>
+<script type="text/javascript">
+	$(window).ready(function() {
+		$('img').imageFocusResize();
+	});
+</script>
+</body>
+</html>
