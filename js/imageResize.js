@@ -25,13 +25,18 @@ to the 4 points image focus plugins
 				var imageDataPosition = null, // will hold the user specified side area
 					imageDataWidth = null, // will hold the user specified cover area
 					originalImageSize = null, // will hold the native image size
+					realScreenWidth = null,
 					originalImageWidth = 0, // will hold the image original image width
 					originalImageHeight = 0, // will hold the image original image height
 					originalImageRatio = 1; // will hold the image original image ratio
 
 					// the init function that only runs once
 					function init() {
-						var splitData, theImage;
+						var splitData, theImage, noScrollWidth;
+						
+						noScrollWidth = $('body').css('overflow', 'hidden').innerWidth();
+						$('body').css('overflow', 'visible');
+						realScreenWidth = noScrollWidth - $('body').innerWidth();
 
 						if (checkIfData()) {
 							splitData = obj.data('focus').split(' '); // get the data-focus info and separate the 2 options
@@ -78,7 +83,7 @@ to the 4 points image focus plugins
 					// resizeImage that triggers on init and resize only if window with is beneath 768
 					function resizeImage() {
 						if (checkIfData()) {
-							if ($(window).innerWidth() <= 768) {
+							if ($(window).innerWidth() <= (768 - realScreenWidth)) {
 								obj.parent().css('overflow', 'hidden');
 								obj.css('max-width', 'none');
 
@@ -142,6 +147,7 @@ to the 4 points image focus plugins
 					};
 				// start the plugin
 				init();
+
 			});
 		}
 	});
